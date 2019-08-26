@@ -9,7 +9,7 @@ To build AliceVision, follow this [guide](https://github.com/alicevision/AliceVi
 
 Meshroom also relies on specific files provided with AliceVision.
 * sensor database: a text database of sensor width per camera model.
-Provided in AliceVision source tree: {ALICEVISION_ROOT}/src/aliceVision/sensorDB/sensor_width_camera_database.txt
+Provided in AliceVision source tree: {ALICEVISION_ROOT}/src/aliceVision/sensorDB/cameraSensors.db
 * voctree (optional): for larger datasets (>200 images), greatly improves image matching performances.
 It can be downloaded [here](https://gitlab.com/alicevision/trainedVocabularyTreeData/raw/master/vlfeat_K80L3.SIFT.tree).
 
@@ -36,6 +36,11 @@ pip install -r requirements.txt -r dev_requirements.txt
 ```
 > Note: `dev_requirements` is only related to testing and packaging. It is not mandatory to run Meshroom.
 
+### Qt/PySide
+* PySide >= 5.12.2
+Warning: On Windows, the plugin AssimpSceneParser is missing from pre-built binaries, so you need to add it manually (from an older version for instance).
+See https://bugreports.qt.io/browse/QTBUG-74535
+
 ### Qt Plugins
 Additional Qt plugins can be built to extend Meshroom UI features. They can be found on separate repositories,
 though they might get better integration in the future.
@@ -55,3 +60,11 @@ This plugin also provides a QML Qt3D Entity to load depthmaps files stored in EX
 QT_PLUGIN_PATH=/path/to/QtOIIO/install
 QML2_IMPORT_PATH=/path/to/QtOIIO/install/qml
 ```
+
+#### [QtAliceVision](https://github.com/alicevision/QtAliceVision)
+Use AliceVision to load and visualize intermediate reconstruction files.
+```
+QML2_IMPORT_PATH=/path/to/qtAliceVision/install/qml
+```
+
+
